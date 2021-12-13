@@ -10,12 +10,12 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
 
-const App = () => {
+const App = (props) => {
 
-  let posts = [
+  /*let posts = [
     { id: 1, post: 'Hi, how are you?', likesCount: 14 },
     { id: 2, post: "It's my first post", likesCount: 21 }
-  ]
+  ]*/
 
   return (
     <BrowserRouter>
@@ -24,8 +24,8 @@ const App = () => {
         <Navbar />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path='/' element={<Profile posts={posts} />} />
-            <Route path='/profile' element={<Profile posts={posts} />} />
+            <Route path='/' element={<Profile posts={props.posts} />} />
+            <Route path='/profile' element={<Profile posts={props.posts} />} />
             <Route path='/dialogs/*' element={<Dialogs />} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
