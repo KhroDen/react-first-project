@@ -12,12 +12,7 @@ import Settings from './components/Settings/Settings';
 
 const App = (props) => {
 
-  /*let posts = [
-    { id: 1, post: 'Hi, how are you?', likesCount: 14 },
-    { id: 2, post: "It's my first post", likesCount: 21 }
-  ]*/
-
-  return (
+    return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
@@ -26,7 +21,7 @@ const App = (props) => {
           <Routes>
             <Route path='/' element={<Profile posts={props.posts} />} />
             <Route path='/profile' element={<Profile posts={props.posts} />} />
-            <Route path='/dialogs/*' element={<Dialogs />} />
+            <Route path='/dialogs/*' element={<Dialogs dialogs={props.dialogs} messages={props.messages} />} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />
