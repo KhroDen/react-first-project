@@ -19,6 +19,10 @@ const MyPosts = (props) => {
     )
   })
 
+  let addPost = () => {
+    alert("Hey!");
+  }
+
   return (
     <div className={s.postBlock}>
       <h3>My posts</h3>
@@ -27,7 +31,7 @@ const MyPosts = (props) => {
           <textarea></textarea>
         </div>
         <div>
-          <button>Add post</button>
+          <button onClick={addPost}>Add post</button>
         </div>
       </div>
       <div className={s.posts}>
