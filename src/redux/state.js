@@ -29,27 +29,33 @@ let store = {
         }
 
     },
+    _callsubscriber() { },
+
+
     getState() {
         return this._state;
     },
-    _callsubscriber() { },
-    addPost() {
-        let newPost = {
-            id: 3,
-            post: this._state.profilePage.newPostText,
-            likesCount: 0,
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = "";
-        this._callsubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callsubscriber(this._state);
-    },
     subscribe(observer) {
         this._callsubscriber = observer;
+    },
+
+
+    dispatch(action) { // {type: 'ADD-POST'}
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 3,
+                post: this._state.profilePage.newPostText,
+                likesCount: 0,
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = "";
+            this._callsubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callsubscriber(this._state);
+        }
     }
+
 }
 
 
