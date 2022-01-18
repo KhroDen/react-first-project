@@ -6,26 +6,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import {Provider} from "react-redux"
-
-let rerenderEntireTree = (state) => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <React.StrictMode>
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            </React.StrictMode>,
-        </BrowserRouter>, document.getElementById('root')
-    );
-}
+import { Provider } from "react-redux"
 
 
-rerenderEntireTree(store.getState());
+ReactDOM.render(
+    <BrowserRouter>
+        <React.StrictMode>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </React.StrictMode>,
+    </BrowserRouter>, document.getElementById('root')
+);
 
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);
-});
 
 reportWebVitals();
