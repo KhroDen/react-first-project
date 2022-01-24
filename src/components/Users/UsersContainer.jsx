@@ -11,21 +11,21 @@ import Preloader from "../common/preloader/Preloader";
 class UsersContainer extends React.Component {
 
 	componentDidMount() {
-		this.props.toggleISFetching(true);
+		this.props.toggleIsFetching(true);
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
 			.then(Response => {
-				this.props.toggleISFetching(false);
+				this.props.toggleIsFetching(false);
 				this.props.setUsers(Response.data.items);
-				this.props.setTotalUsersCount(Response.data.totalCount);
+				this.props.setUsersTotalCount(Response.data.totalCount);
 			});
 	}
 
 	onPageChanged = (pageNumber) => {
 		this.props.setCurrentPage(pageNumber);
-		this.props.toggleISFetching(true);
+		this.props.toggleIsFetching(true);
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
 			.then(Response => {
-				this.props.toggleISFetching(false);
+				this.props.toggleIsFetching(false);
 				this.props.setUsers(Response.data.items);
 			});
 	}
