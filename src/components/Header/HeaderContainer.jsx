@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { usersAPI } from "../../api/api";
+import { authAPI } from "../../api/api";
 import { setAuthUserData } from "../../redux/auth-reducer";
 import Header from "./Header";
 
@@ -8,7 +8,7 @@ import Header from "./Header";
 const HeaderContainer = (props) => {
 
 	React.useEffect(() => {
-		usersAPI.getAuth()
+		authAPI.me()
 			.then(data => {
 				if (data.resultCode === 0) {
 					let { id, email, login } = data.data;
