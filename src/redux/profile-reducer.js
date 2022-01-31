@@ -44,11 +44,17 @@ export const addPostActionCreator = () => ({ type: ADD_POST })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 // если функция только возвращает данные, то можно обойтись без слова return и обернуть в круглые скобки
 
+export const getUserProfile = (userId) => (dispatch) => {
+
+}
+
 export const updateNewPostTextActionCreator = (text) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: text,
     }
 }
+
+
 
 export default profileReducer;

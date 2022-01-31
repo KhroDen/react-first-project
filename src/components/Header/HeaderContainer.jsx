@@ -9,9 +9,9 @@ const HeaderContainer = (props) => {
 
 	React.useEffect(() => {
 		authAPI.me()
-			.then(data => {
-				if (data.resultCode === 0) {
-					let { id, email, login } = data.data;
+			.then(Response => {
+				if (Response.data.resultCode === 0) {
+					let { id, email, login } = Response.data.data;
 					props.setAuthUserData(id, email, login);
 				}
 			});
