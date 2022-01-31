@@ -1,24 +1,13 @@
-import * as axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { setUserProfile } from "../../redux/profile-reducer"
+import { getUserProfile } from "../../redux/profile-reducer"
 import { useParams } from "react-router-dom";
-import { usersAPI } from "../../api/api";
 
 
 let ProfileContainer = (props) => {
-
-  React.useEffect(() => {
-
-    usersAPI.getProfile(userId)
-      .then(Response => {
-        props.setUserProfile(Response.data);
-      });
-  }, []);
-
+  React.useEffect(() => { props.getUserProfile(userId) }, []);
   let { userId } = useParams();
-
   return (
     <Profile {...props} profile={props.profile} />
   )
@@ -44,11 +33,8 @@ let mapStateToProps = (state) => ({
     )
   }
 }
-
-let mapStateToProps = (state) => ({
-  profile: state.profilePage.profile
-})
 */
 
 
-export default connect(mapStateToProps, { setUserProfile })(ProfileContainer);
+
+export default connect(mapStateToProps, { getUserProfile })(ProfileContainer);
