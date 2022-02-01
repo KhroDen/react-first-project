@@ -33,7 +33,6 @@ const Dialogs = (props) => {
         props.updateNewMessageBody(body);
     }
 
-    if (props.isAuth === false) return <Navigate to={"/login"} />;
 
     return (
         <div className={s.dialogs}>
