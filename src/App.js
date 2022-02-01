@@ -1,7 +1,5 @@
 import './App.css';
-import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
 import { Route, Routes } from 'react-router';
 import News from './components/News/News';
 import Music from './components/Music/Music';
@@ -10,6 +8,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import LoginPage from "./components/login/Login";
 
 
 const App = (props) => {
@@ -27,6 +26,7 @@ const App = (props) => {
 					<Route path='/music' element={<Music />} />
 					<Route path='/settings' element={<Settings />} />
 					<Route path='/users' element={<UsersContainer />} />
+					<Route path='/login' element={<LoginPage />} />
 				</Routes>
 			</div>
 		</div>
