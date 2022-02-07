@@ -6,14 +6,23 @@ import { useState } from "react";
 const ProfileStatus = (props) => {
 
 	let [editMode, setEditMode] = useState(false);
+	let [status, setStatus] = useState(props.status);
 
 	let activateEditMode = () => {
 		setEditMode(true)
 	}
 
 	let deActivateEditMode = () => {
-		setEditMode(false)
+		setEditMode(false);
+		props.updateStatus(status);
 	}
+
+	let onStatusChange = (e) => {
+		let st = e.currentTarget.value;
+		setStatus(st);
+	}
+
+
 
 	return (
 		<div>
@@ -24,7 +33,7 @@ const ProfileStatus = (props) => {
 			}
 			{editMode &&
 				<div>
-					<input autoFocus={true} onBlur={deActivateEditMode} value={props.status} />
+					<input onChange={onStatusChange} autoFocus={true} onBlur={onStatusChange, deActivateEditMode} value={status} />
 				</div>
 			}
 		</div>
