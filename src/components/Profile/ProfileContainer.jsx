@@ -19,8 +19,10 @@ let ProfileContainer = (props) => {
 
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
-  status: state.profilePage.status
-})
+  status: state.profilePage.status,
+  authorizedUserId: state.auth.userId,
+  isAuth: state.auth.isAuth,
+});
 
 export default compose(
   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }))
