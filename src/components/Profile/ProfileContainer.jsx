@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import { getUserProfile, getStatus, updateStatus } from "../../redux/profile-reducer"
 import { useParams } from "react-router-dom";
-import { withAuthRedirect } from "../../hoc/WithAuthRedirect";
 import { compose } from "redux";
 
 
