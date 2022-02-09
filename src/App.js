@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import { Route, Routes } from 'react-router';
 import News from './components/News/News';
@@ -9,9 +10,20 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from "./components/login/Login";
+import { initializeApp } from "./redux/app-reducer";
+import { connect } from 'react-redux';
+import Preloader from './components/common/preloader/Preloader';
 
 
 const App = (props) => {
+
+	React.useEffect(() => { props.initializeApp() }, []);
+
+	{
+		if (!props.initialized) {
+			return <Preloader />
+		}
+	}
 
 	return (
 		<div className='app-wrapper'>
@@ -33,4 +45,8 @@ const App = (props) => {
 	);
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	initialized: state.app.initialized
+})
+
+export default connect(mapStateToProps, { initializeApp })(App);
