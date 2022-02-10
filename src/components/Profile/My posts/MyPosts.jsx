@@ -12,7 +12,7 @@ import Post from "./Post/Post";
 ]*/
 
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 
 	let postsElements = props.posts.map(p => {
 		return (
@@ -33,7 +33,7 @@ const MyPosts = (props) => {
 			</div>
 		</div>
 	)
-}
+})
 
 const maxLength10 = maxLengthCreator(10);
 
