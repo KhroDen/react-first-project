@@ -1,6 +1,7 @@
 import React from "react";
 import s from './ProfileInfo.module.css';
 import { useState } from "react";
+import { useEffect } from "react";
 
 
 const ProfileStatus = (props) => {
@@ -8,32 +9,36 @@ const ProfileStatus = (props) => {
 	let [editMode, setEditMode] = useState(false);
 	let [status, setStatus] = useState(props.status);
 
-	let activateEditMode = () => {
+	useEffect(() => {
+		setStatus(props.status);
+	}, [props.status])
+
+	const activateEditMode = () => {
 		setEditMode(true)
 	}
 
-	let deActivateEditMode = () => {
+	const deActivateEditMode = () => {
 		setEditMode(false);
 		props.updateStatus(status);
 	}
 
-	let onStatusChange = (e) => {
-		let st = e.currentTarget.value;
-		setStatus(st);
+	const onStatusChange = (e) => {
+		setStatus(e.currentTarget.value);
 	}
-
-
 
 	return (
 		<div>Статус:
 			{!editMode &&
 				<div>
-					<span onDoubleClick={activateEditMode}>{props.status}</span>
+					<span onDoubleClick={activateEditMode}>{props.status || "-----"}</span>
 				</div>
 			}
 			{editMode &&
 				<div>
-					<input onChange={onStatusChange} autoFocus={true} onBlur={onStatusChange, deActivateEditMode} value={status} />
+					<input onChange={onStatusChange}
+						autoFocus={true}
+						onBlur={ /*onStatusChange,*/ deActivateEditMode}
+						value={status} />
 				</div>
 			}
 		</div>
