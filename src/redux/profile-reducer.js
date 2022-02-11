@@ -52,27 +52,21 @@ export const setStatus = (status) => ({ type: SET_STATUS, status })
 export const deletePost = (postId) => ({ type: DELETE_POST, postId })
 // если функция только возвращает данные, то можно обойтись без слова return и обернуть в круглые скобки
 
-export const getUserProfile = (userId) => (dispatch) => {
-	usersAPI.getProfile(userId)
-		.then(Response => {
-			dispatch(setUserProfile(Response.data));
-		});
+export const getUserProfile = (userId) => async (dispatch) => {
+	let Response = await usersAPI.getProfile(userId)
+	dispatch(setUserProfile(Response.data));
 }
 
-export const getStatus = (userId) => (dispatch) => {
-	profileAPI.getStatus(userId)
-		.then(Response => {
-			dispatch(setStatus(Response.data));
-		});
+export const getStatus = (userId) => async (dispatch) => {
+	let Response = await profileAPI.getStatus(userId)
+	dispatch(setStatus(Response.data));
 }
 
-export const updateStatus = (status) => (dispatch) => {
-	profileAPI.updateStatus(status)
-		.then(Response => {
-			if (Response.data.resultCode === 0) {
-				dispatch(setStatus(status));
-			}
-		});
+export const updateStatus = (status) => async (dispatch) => {
+	let Response = await profileAPI.updateStatus(status)
+	if (Response.data.resultCode === 0) {
+		dispatch(setStatus(status));
+	}
 }
 
 

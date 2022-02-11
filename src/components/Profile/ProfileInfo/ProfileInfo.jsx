@@ -3,9 +3,9 @@ import Preloader from "../../common/preloader/Preloader";
 import s from './ProfileInfo.module.css';
 import ProfileStatus from './ProfileStatus.jsx';
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
 
-	if (!props.profile) {
+	if (!profile) {
 		return <Preloader />
 	}
 
@@ -14,12 +14,12 @@ const ProfileInfo = (props) => {
 			<img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'></img>
 		</div> */}
 		<div className={s.descriptionBlock}>
-			<img src={props.profile.photos.small} />
-			<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-			<div>Имя: {props.profile.fullName}</div>
-			<div>О себе: {props.profile.aboutMe}</div>
-			<div>Ищет работу? :  {props.profile.lookingForAJob}</div>
-			<div>Серьезно ищет работу?? :  {props.profile.lookingForAJobDescription}</div>
+			<img src={profile.photos.small} />
+			<ProfileStatus status={status} updateStatus={updateStatus} />
+			<div>Имя: {profile.fullName}</div>
+			<div>О себе: {profile.aboutMe}</div>
+			<div>Ищет работу? :  {profile.lookingForAJob}</div>
+			<div>Серьезно ищет работу?? :  {profile.lookingForAJobDescription}</div>
 		</div>
 	</div>
 }
