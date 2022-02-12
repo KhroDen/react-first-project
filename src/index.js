@@ -7,16 +7,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux"
+import SamuraiJSApp from "./App";
 
 
 ReactDOM.render(
-    <BrowserRouter>
-        <React.StrictMode>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </React.StrictMode>,
-    </BrowserRouter>, document.getElementById('root')
+    <SamuraiJSApp/> ,
+  document.getElementById('root')
 );
 
 
