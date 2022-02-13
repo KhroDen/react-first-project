@@ -1,20 +1,28 @@
 import React from "react";
 import Preloader from "../../common/preloader/Preloader";
-import s from './ProfileInfo.module.css';
+import styles from './ProfileInfo.module.css';
 import ProfileStatus from './ProfileStatus.jsx';
+import userPhoto from '../../../assets/images/user.png';
 
-const ProfileInfo = ({ profile, status, updateStatus }) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
 
 	if (!profile) {
 		return <Preloader />
+	}
+
+	const onMainPhotoSelected = (e) => {
+		if (e.target.files.length) {
+			savePhoto(e.target.files[0]);
+		}
 	}
 
 	return <div>
 		{/* <div>
 			<img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'></img>
 		</div> */}
-		<div className={s.descriptionBlock}>
-			<img src={profile.photos.small} />
+		<div className={styles.descriptionBlock}>
+			<img src={profile.photos.small || userPhoto} className={styles.mainPhoto} />
+			{isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
 			<ProfileStatus status={status} updateStatus={updateStatus} />
 			<div>Имя: {profile.fullName}</div>
 			<div>О себе: {profile.aboutMe}</div>
