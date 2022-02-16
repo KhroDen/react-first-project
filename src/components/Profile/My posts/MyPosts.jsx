@@ -16,7 +16,7 @@ const MyPosts = React.memo((props) => {
 
 	let postsElements = props.posts.map(p => {
 		return (
-			<Post message={p.post} likesCount={p.likesCount} />
+			<Post key={p.id} message={p.post} likesCount={p.likesCount} />
 		)
 	})
 

@@ -26,7 +26,7 @@ const usersReducer = (state = initialState, action) => {
 			return {
 				...state,
 				// пример рефакторинга
-				// создали общую вспомогательную функцию updateObjectInArray
+				// создали общую вспомогательную функцию updateObjectInArray, находится в utils
 				// передали в нее нужные параметры, она заменяет следующие 6 строк
 				// users: updateObjectInArray(state.users, action.userId, "id", { followed: true })
 				users: state.users.map(u => {

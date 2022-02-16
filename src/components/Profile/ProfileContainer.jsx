@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { getUserProfile, getStatus, updateStatus, savePhoto } from "../../redux/profile-reducer"
+import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from "../../redux/profile-reducer"
 import { useParams } from "react-router-dom";
 import { compose } from "redux";
 
 
 let ProfileContainer = (props) => {
 
-	React.useEffect(() => { props.getUserProfile(userId) }, [props]);
+	React.useEffect(() => { props.getUserProfile(userId) }, []);
 	let { userId } = useParams();
 	props.getStatus(userId);
 
@@ -17,7 +17,7 @@ let ProfileContainer = (props) => {
 	}
 
 	return (
-		<Profile {...props} profile={props.profile} status={props.status} updateStatus={props.updateStatus} isOwner={!!userId} savePhoto={props.savePhoto} />
+		<Profile {...props} profile={props.profile} status={props.status} updateStatus={props.updateStatus} isOwner={!!userId} savePhoto={props.savePhoto} saveProfile={props.saveProfile} />
 	)
 };
 
@@ -30,7 +30,7 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-	connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }))
+	connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }))
 	(ProfileContainer);
 
 //let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
