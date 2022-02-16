@@ -53,15 +53,15 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
 			<b>О себе:</b> {profile.aboutMe}
 		</div>
 		<div>
-			<b>Ищет работу?</b> :  {profile.lookingForAJob ? "да" : "нет"}
+			<b>Нужна ли работа:</b>  {profile.lookingForAJob ? "да" : "нет"}
 		</div>
 		{profile.lookingForAJob &&
 			<div>
-				<b>Серьезно ищет работу??</b> :  {profile.lookingForAJobDescription}
+				<b>Умения, навыки:</b> {profile.lookingForAJobDescription}
 			</div>
 		}
 		<div>
-			<b>Контакты:</b> : {Object.keys(profile.contacts).map(key => {
+			<b>Контакты:</b> {Object.keys(profile.contacts).map(key => {
 				return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
 			})}
 		</div>
